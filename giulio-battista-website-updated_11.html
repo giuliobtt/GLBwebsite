@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giulio Leonardo Battista</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --white: #fff;
+            --g100: #f5f7f5;
+            --g200: #e8ede8;
+            --g300: #cdd8cd;
+            --g400: #9aad9a;
+            --g600: #4a5e4a;
+            --g800: #2e3e2e;
+            --black: #111a11;
+            --accent: #2d5a2d;
+            --accent-mid: #4a8a4a;
+            --accent-light: #eaf2ea;
+        }
+
+        body {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            background: var(--white);
+            color: var(--black);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* Green banner at top */
+        .top-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%);
+            height: 8px;
+            width: 100%;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 54px;
+        }
+
+        .topnav-name {
+            font-family: "DM Mono", monospace;
+            font-size: 0.66rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-btn {
+            font-family: "DM Mono", monospace;
+            font-size: 0.57rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--g600);
+            background: none;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            color: var(--white);
+            background: var(--accent);
+        }
+
+        section {
+            display: none;
+            padding: 64px 0 88px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .section-shell {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(45, 90, 45, 0.3);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--black);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.02rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            font-family: "DM Mono", monospace;
+            font-size: 0.75rem;
+        }
+
+        .contact-item {
+            color: var(--g600);
+        }
+
+        .contact-item strong {
+            color: var(--accent);
+        }
+
+        /* Interactive animations for about section */
+        .about-bio p {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .about-bio p:nth-child(1) { animation-delay: 0.1s; }
+        .about-bio p:nth-child(2) { animation-delay: 0.2s; }
+        .about-bio p:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Social links section */
+        .social-links {
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--g200) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--white);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--accent);
+            font-family: "DM Mono", monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 90, 45, 0.3);
+        }
+
+        .social-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Timeline */
+        .edu-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--g200);
+            transition: all 0.15s;
+        }
+
+        .edu-item:first-of-type {
+            border-top: 1px solid var(--g200);
+        }
+
+        .edu-item:hover {
+            background: var(--g100);
+            margin: 0 -14px;
+            padding-left: 14px;
+            padding-right: 14px;
+        }
+
+        .edu-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .edu-logo {
+            width: 64px;
+            height: 64px;
+            border: 1px solid var(--g200);
+            border-radius: 4px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s;
+        }
+
+        .edu-logo img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            filter: grayscale(30%);
+            opacity: 0.85;
+        }
+
+        .edu-item:hover .edu-logo {
+            border-color: var(--accent);
+        }
+
+        .edu-item:hover .edu-logo img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .edu-main {
+            flex: 1;
+        }
+
+        .edu-right {
+            text-align: right;
+        }
+
+        .edu-degree {
+            font-weight: 400;
+            font-size: 0.97rem;
+        }
+
+        .edu-school {
+            font-family: "DM Mono", monospace;
+            font-size: 0.58rem;
+            color: var(--g400);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-top: 2px;
+        }
+
+        .edu-year {
+            font-family: "DM Mono", monospace;
+            font-size: 0.57rem;
+            color: var(--g400);
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--g200);
+            padding: 24px;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .project-card:hover {
+            background: var(--g100);
+        }
+
+        .project-type {
+            font-family: "DM Mono", monospace;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .project-meta {
+            font-family: "DM Mono", monospace;
+            font-size: 0.7rem;
+            color: var(--g400);
+            margin-bottom: 12px;
+        }
+
+        .atlas-toggle {
+            font-family: "DM Mono", monospace;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: none;
+            border: 1px solid var(--g300);
+            padding: 8px 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: all 0.2s;
+        }
+
+        .atlas-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .atlas-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .atlas-section.open {
+            max-height: 8000px;
+            margin-top: 24px;
+        }
+
+        .atlas-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 18px 12px;
+            background: var(--accent-light);
+            border-radius: 4px;
+            border: 1px solid var(--g200);
+        }
+
+        .stat-num {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: "DM Mono", monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--g600);
+            margin-top: 6px;
+        }
+
+        .code-bar {
+            margin: 8px 0;
+        }
+
+        .code-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-family: "DM Mono", monospace;
+            font-size: 0.7rem;
+            margin-bottom: 4px;
+        }
+
+        .code-bar-track {
+            height: 6px;
+            background: var(--g200);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .code-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease;
+            width: 0%;
+        }
+
+        /* Atlas sub-sections */
+        .atlas-subsection {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--g200);
+        }
+
+        .atlas-subsection-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        /* Chart containers */
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 16px 0;
+        }
+
+        .chart-box {
+            background: var(--white);
+            border: 1px solid var(--g200);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        .chart-box-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--g600);
+            margin-bottom: 12px;
+        }
+
+        /* Donut chart */
+        .donut-wrap {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .donut-svg {
+            width: 140px;
+            height: 140px;
+            flex-shrink: 0;
+        }
+        .donut-legend {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            line-height: 2;
+        }
+        .donut-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .donut-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Bar chart (vertical) */
+        .v-bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 130px;
+            padding-top: 10px;
+            border-bottom: 1px solid var(--g200);
+        }
+        .v-bar-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+        }
+        .v-bar {
+            width: 100%;
+            max-width: 28px;
+            background: var(--accent);
+            border-radius: 2px 2px 0 0;
+            transition: height 1s ease;
+            min-height: 2px;
+            position: relative;
+        }
+        .v-bar:hover {
+            background: var(--accent-mid);
+        }
+        .v-bar-count {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.5rem;
+            color: var(--g600);
+            margin-bottom: 3px;
+        }
+        .v-bar-labels {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        .v-bar-labels span {
+            flex: 1;
+            text-align: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.5rem;
+            color: var(--g400);
+        }
+
+        /* Document list */
+        .doc-group {
+            margin-bottom: 16px;
+        }
+        .doc-group-header {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--g200);
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+        .doc-group-header:hover {
+            color: var(--accent-mid);
+        }
+        .doc-group-count {
+            background: var(--accent-light);
+            padding: 1px 8px;
+            border-radius: 10px;
+            font-size: 0.55rem;
+        }
+        .doc-group-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .doc-group-list.expanded {
+            max-height: 1200px;
+        }
+        .doc-group-list li {
+            font-size: 0.8rem;
+            color: var(--g600);
+            padding: 4px 0 4px 12px;
+            border-bottom: 1px solid var(--g100);
+            list-style: none;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        /* Network visualization mini */
+        .network-mini {
+            padding: 16px;
+            background: var(--g100);
+            border-radius: 4px;
+            border: 1px solid var(--g200);
+            margin: 16px 0;
+        }
+        .network-mini svg {
+            width: 100%;
+            height: 240px;
+        }
+
+        /* ================================================= */
+        /* Articles - News Outlet Style */
+        /* ================================================= */
+
+        .articles-header {
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+        .articles-header h2 {
+            margin-bottom: 0;
+        }
+        .articles-date {
+            font-family: "DM Mono", monospace;
+            font-size: 0.65rem;
+            color: var(--g400);
+        }
+
+        /* Featured / Hero article */
+        .article-hero {
+            cursor: pointer;
+            padding-bottom: 28px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--g200);
+            transition: all 0.3s;
+        }
+        .article-hero:hover {
+            padding-left: 8px;
+        }
+        .article-hero .article-category {
+            font-family: "DM Mono", monospace;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--white);
+            background: var(--accent);
+            display: inline-block;
+            padding: 3px 10px;
+            margin-bottom: 14px;
+        }
+        .article-hero .article-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            color: var(--black);
+        }
+        .article-hero .article-excerpt {
+            font-size: 1.05rem;
+            color: var(--g600);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 12px;
+            max-width: 90%;
+        }
+        .article-hero .article-meta {
+            font-family: "DM Mono", monospace;
+            font-size: 0.65rem;
+            color: var(--g400);
+        }
+        .article-hero .read-tag {
+            font-family: "DM Mono", monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .read-tag .arrow {
+            transition: transform 0.2s;
+        }
+        .article-hero:hover .read-tag .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Article grid: 2-col for secondary articles */
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-top: 1px solid var(--g200);
+        }
+        .article-grid-item {
+            padding: 20px 20px 20px 0;
+            border-bottom: 1px solid var(--g200);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .article-grid-item:nth-child(even) {
+            padding-left: 20px;
+            border-left: 1px solid var(--g200);
+        }
+        .article-grid-item:hover {
+            background: var(--g100);
+        }
+        .article-grid-item .article-category {
+            font-family: "DM Mono", monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .article-grid-item .article-title {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+        .article-grid-item .article-excerpt {
+            font-size: 0.88rem;
+            color: var(--g600);
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .article-grid-item .article-meta {
+            font-family: "DM Mono", monospace;
+            font-size: 0.6rem;
+            color: var(--g400);
+        }
+        .article-grid-item .read-tag {
+            font-family: "DM Mono", monospace;
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .article-grid-item .read-tag .arrow {
+            transition: transform 0.2s;
+        }
+        .article-grid-item:hover .read-tag .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ================================================= */
+        /* Article Reader - Full Page Slide-In */
+        /* ================================================= */
+        .article-reader {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            pointer-events: none;
+            visibility: hidden;
+        }
+        .article-reader.open {
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .article-reader-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(17, 26, 17, 0);
+            transition: background 0.45s ease;
+        }
+        .article-reader.open .article-reader-overlay {
+            background: rgba(17, 26, 17, 0.7);
+        }
+
+        .article-reader-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 680px;
+            max-width: 100%;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .article-reader.open .article-reader-panel {
+            transform: translateX(0);
+        }
+
+        .reader-close {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--g200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 48px;
+        }
+        .reader-close-btn {
+            font-family: "DM Mono", monospace;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--g600);
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 0;
+        }
+        .reader-close-btn:hover {
+            color: var(--accent);
+        }
+        .reader-cat-badge {
+            font-family: "DM Mono", monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--white);
+            background: var(--accent);
+            padding: 2px 10px;
+        }
+
+        .reader-header {
+            padding: 40px 40px 28px;
+            border-bottom: 1px solid var(--g200);
+        }
+        .reader-header h1 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+        .reader-header-meta {
+            font-family: "DM Mono", monospace;
+            font-size: 0.7rem;
+            color: var(--g400);
+        }
+
+        .reader-body {
+            padding: 32px 40px 80px;
+        }
+        .reader-body h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+        .reader-body p {
+            font-size: 1rem;
+            line-height: 1.85;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+        .reader-body p:first-child::first-letter {
+            font-size: 3.2rem;
+            float: left;
+            line-height: 1;
+            margin-right: 8px;
+            margin-top: 4px;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        /* ================================================= */
+        /* Responsive */
+        /* ================================================= */
+        @media (max-width: 700px) {
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .profile-photo { margin: 0 auto; }
+            .contact-info { grid-template-columns: 1fr; }
+            .atlas-stats { grid-template-columns: repeat(2, 1fr); }
+            .chart-row { grid-template-columns: 1fr; }
+            .article-grid { grid-template-columns: 1fr; }
+            .article-grid-item:nth-child(even) {
+                padding-left: 0;
+                border-left: none;
+            }
+            .article-hero .article-title { font-size: 1.4rem; }
+            .article-reader-panel { width: 100%; }
+            .links-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Green footer banner */
+        footer {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        footer p {
+            font-family: "DM Mono", monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top green banner -->
+    <div class="top-banner"></div>
+
+    <nav>
+        <div class="topnav-name">Giulio Leonardo Battista</div>
+        <div class="nav-links">
+            <button class="nav-btn active" onclick="showSection('home', this)">About</button>
+            <button class="nav-btn" onclick="showSection('education', this)">Education</button>
+            <button class="nav-btn" onclick="showSection('projects', this)">Research</button>
+            <button class="nav-btn" onclick="showSection('skills', this)">Skills</button>
+            <button class="nav-btn" onclick="showSection('writing', this)">Writing</button>
+            <button class="nav-btn" onclick="showSection('contact', this)">Contact</button>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="home" class="active">
+        <div class="section-shell">
+            <h2>About</h2>
+            <div class="about-grid">
+                <div>
+                    <div style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--accent); background: var(--accent-light); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-family: 'DM Mono', monospace; font-size: 3rem; color: var(--accent);">GB</span>
+                    </div>
+                </div>
+                <div class="about-bio">
+                    <h3>Giulio Leonardo Battista</h3>
+                    <p>Political science graduate and researcher specialising in EU external action, international relations, and critical discourse analysis. Currently completing a double-degree Master's programme at the Universiteit van Amsterdam and KU Leuven.</p>
+                    <p>Research interests include EU-Georgia relations, postcolonial political economy, and the intersection of security and normative power in EU foreign policy. Experienced in qualitative research methods using Atlas.ti for systematic discourse analysis.</p>
+                    <div class="contact-info">
+                        <div class="contact-item"><strong>Location</strong><br>Brussels, Belgium</div>
+                        <div class="contact-item"><strong>Languages</strong><br>IT · EN · FR · ES</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="social-links">
+                <h3>Connect With Me</h3>
+                <div class="links-grid">
+                    <a href="mailto:giulio.leonardo.battista@gmail.com" class="social-link">
+                        <span class="social-icon">✉</span>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/giulio-battista" target="_blank" class="social-link">
+                        <span class="social-icon">in</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="tel:+32499872695" class="social-link">
+                        <span class="social-icon">📞</span>
+                        <span>Phone</span>
+                    </a>
+                    <a href="CV_GIULIOBATTISTA_EDA__1_.pdf" download class="social-link">
+                        <span class="social-icon">📄</span>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-shell">
+            <h2>Education</h2>
+
+            <div class="edu-item">
+                <div class="edu-top">
+                    <div class="edu-logo">
+                        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent);">KUL</span>
+                    </div>
+                    <div class="edu-main">
+                        <div class="edu-degree">MA European Studies: European International Relations and Diplomacy Studies</div>
+                        <div class="edu-school">KU Leuven</div>
+                        <p style="margin-top: 8px; font-size: 0.88rem;">Advanced study of EU institutions, European diplomacy, and international political economy. Thesis research on EU Horizon programme funding and international responsibility.</p>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-year">Sep 2024 – Jun 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-top">
+                    <div class="edu-logo">
+                        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent);">UvA</span>
+                    </div>
+                    <div class="edu-main">
+                        <div class="edu-degree">MA Political Science: International Relations</div>
+                        <div class="edu-school">Universiteit van Amsterdam</div>
+                        <p style="margin-top: 8px; font-size: 0.88rem;">Specialisation in international relations theory, EU external action and global governance. Research focus on the EU's role in peace, security and relations with neighbouring countries (ENP).</p>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-year">Sep 2024 – Jun 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-top">
+                    <div class="edu-logo">
+                        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent);">SU</span>
+                    </div>
+                    <div class="edu-main">
+                        <div class="edu-degree">Erasmus Exchange Program</div>
+                        <div class="edu-school">Stockholms Universitet</div>
+                        <p style="margin-top: 8px; font-size: 0.88rem;">Focused coursework on Global Security and Governance, including Human and International Security concepts.</p>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-year">2023 – 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-top">
+                    <div class="edu-logo">
+                        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent);">VUB</span>
+                    </div>
+                    <div class="edu-main">
+                        <div class="edu-degree">BSc Social Sciences: Political Science</div>
+                        <div class="edu-school">Vrije Universiteit Brussels</div>
+                        <p style="margin-top: 8px; font-size: 0.88rem;">Joint degree program with focus on political science, international relations and policy analysis.</p>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-year">Sep 2021 – Jun 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-top">
+                    <div class="edu-logo">
+                        <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--accent);">ESB</span>
+                    </div>
+                    <div class="edu-main">
+                        <div class="edu-degree">European Baccalaureate</div>
+                        <div class="edu-school">European School of Brussels II</div>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-year">Sep 2006 – Jul 2020</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects/Research Section -->
+    <section id="projects">
+        <div class="section-shell">
+            <h2>Research</h2>
+
+            <!-- Completed thesis -->
+            <div class="project-card">
+                <div class="project-type">Master Thesis (Completed)</div>
+                <div class="project-title">The European Hegemonic Project in Georgia: A Critical Discourse Analysis</div>
+                <div class="project-meta">Universiteit van Amsterdam • 2024-2025</div>
+                <p>Critical discourse analysis examining the strategic use of EU discourse in Georgia, exploring power dynamics and strategic communication in EU-Georgia relations. This study employs Atlas.ti for systematic qualitative coding of 42 official EU documents spanning 2004–2025.</p>
+                
+                <button class="atlas-toggle" id="atlas-toggle-btn" onclick="toggleAtlas()">▼ Atlas.ti Research Data & Methodology</button>
+                
+                <div class="atlas-section" id="atlas-section">
+
+                    <!-- Key Numbers -->
+                    <div class="atlas-stats">
+                        <div class="stat-box">
+                            <div class="stat-num">42</div>
+                            <div class="stat-label">Documents Analyzed</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">213</div>
+                            <div class="stat-label">Quotations</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">315</div>
+                            <div class="stat-label">Coded Segments</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num">12</div>
+                            <div class="stat-label">Discourse Codes</div>
+                        </div>
+                    </div>
+
+                    <!-- Code Frequencies -->
+                    <div class="atlas-subsection">
+                        <div class="atlas-subsection-title">Discourse Code Frequency Distribution</div>
+                        
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Conditionality & Normative Hierarchies</span><span>94</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="100%" style="background: #463CC8;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Naturalisation</span><span>51</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="54%" style="background: #DC0000;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Self vs Other</span><span>48</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="51%" style="background: #6E6E6E;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Security vs Normativity</span><span>31</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="33%" style="background: var(--accent);"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Moralization</span><span>29</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="31%" style="background: #008250;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Temporal Framing</span><span>28</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="30%" style="background: #F00082;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Silencing of Alternatives</span><span>14</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="15%" style="background: #8C32A0;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Resistance or Negotiation</span><span>13</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="14%" style="background: #966450;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Depoliticisation of Power</span><span>4</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="4%" style="background: #8C32A0;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Missing Georgian Voices</span><span>2</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="2%" style="background: #8C32A0;"></div></div>
+                        </div>
+                        <div class="code-bar">
+                            <div class="code-bar-label"><span>Geopolitical Complexity Erased</span><span>1</span></div>
+                            <div class="code-bar-track"><div class="code-bar-fill anim-bar" data-width="1%" style="background: #8C32A0;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div class="atlas-subsection">
+                        <div class="atlas-subsection-title">Corpus Composition</div>
+                        <div class="chart-row">
+                            <!-- Donut: Documents by Source -->
+                            <div class="chart-box">
+                                <div class="chart-box-title">Documents by EU Institution</div>
+                                <div class="donut-wrap">
+                                    <svg class="donut-svg" viewBox="0 0 120 120">
+                                        <!-- EEAS: 24/42 = 57% -->
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#463CC8" stroke-width="22"
+                                            stroke-dasharray="161.4 283.6" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+                                        <!-- European Council: 9/42 = 21.4% -->
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#DC0000" stroke-width="22"
+                                            stroke-dasharray="60.5 383.5" stroke-dashoffset="-161.4" transform="rotate(-90 60 60)"/>
+                                        <!-- European Commission: 5/42 = 11.9% -->
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#008250" stroke-width="22"
+                                            stroke-dasharray="33.6 410.4" stroke-dashoffset="-221.9" transform="rotate(-90 60 60)"/>
+                                        <!-- European Parliament: 4/42 = 9.5% -->
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#F00082" stroke-width="22"
+                                            stroke-dasharray="26.9 417.1" stroke-dashoffset="-255.5" transform="rotate(-90 60 60)"/>
+                                        <text x="60" y="58" text-anchor="middle" font-family="DM Mono" font-size="18" fill="var(--accent)" font-weight="300">42</text>
+                                        <text x="60" y="70" text-anchor="middle" font-family="DM Mono" font-size="6" fill="var(--g400)">DOCUMENTS</text>
+                                    </svg>
+                                    <div class="donut-legend">
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#463CC8;"></span> EEAS (24)</div>
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#DC0000;"></span> European Council (9)</div>
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#008250;"></span> European Commission (5)</div>
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#F00082;"></span> European Parliament (4)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bar: Documents by Year -->
+                            <div class="chart-box">
+                                <div class="chart-box-title">Document Timeline (by year)</div>
+                                <div class="v-bar-chart" id="year-chart">
+                                    <!-- JS fills this -->
+                                </div>
+                                <div class="v-bar-labels" id="year-labels">
+                                    <!-- JS fills this -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Speaker Groups -->
+                    <div class="atlas-subsection">
+                        <div class="atlas-subsection-title">Document Groups by Speaker</div>
+                        <div class="chart-row">
+                            <div class="chart-box">
+                                <div class="chart-box-title">Speaker Distribution</div>
+                                <div class="donut-wrap">
+                                    <svg class="donut-svg" viewBox="0 0 120 120">
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#463CC8" stroke-width="22"
+                                            stroke-dasharray="148.2 295.8" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#DC0000" stroke-width="22"
+                                            stroke-dasharray="20.2 423.8" stroke-dashoffset="-148.2" transform="rotate(-90 60 60)"/>
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#008250" stroke-width="22"
+                                            stroke-dasharray="13.5 430.5" stroke-dashoffset="-168.4" transform="rotate(-90 60 60)"/>
+                                        <circle cx="60" cy="60" r="45" fill="none" stroke="#6E6E6E" stroke-width="22"
+                                            stroke-dasharray="101.1 342.9" stroke-dashoffset="-181.9" transform="rotate(-90 60 60)"/>
+                                        <text x="60" y="58" text-anchor="middle" font-family="DM Mono" font-size="18" fill="var(--accent)" font-weight="300">42</text>
+                                        <text x="60" y="70" text-anchor="middle" font-family="DM Mono" font-size="6" fill="var(--g400)">DOCUMENTS</text>
+                                    </svg>
+                                    <div class="donut-legend">
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#463CC8;"></span> Josep Borrell (22)</div>
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#DC0000;"></span> Kaja Kallas (3)</div>
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#008250;"></span> Ursula von der Leyen (2)</div>
+                                        <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#6E6E6E;"></span> Other / Institutional (15)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-box">
+                                <div class="chart-box-title">Temporal Coverage Groups</div>
+                                <div style="margin-top: 10px;">
+                                    <div class="code-bar">
+                                        <div class="code-bar-label"><span>EU Discourse 2020–2025</span><span>27 docs</span></div>
+                                        <div class="code-bar-track"><div class="code-bar-fill" style="width:100%; background: #463CC8;"></div></div>
+                                    </div>
+                                    <div class="code-bar">
+                                        <div class="code-bar-label"><span>EU Discourse 2004–2012</span><span>15 docs</span></div>
+                                        <div class="code-bar-track"><div class="code-bar-fill" style="width:56%; background: #DC0000;"></div></div>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 16px; font-size: 0.82rem; color: var(--g600); font-weight: 300;">
+                                    Two temporal periods enable comparison of EU discourse evolution: the pre-Association Agreement period (2004–2012) and the contemporary crisis period (2020–2025), during which the Foreign Agents Law debate and democratic backsliding concerns intensified EU–Georgia discourse.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Network Mini -->
+                    <div class="atlas-subsection">
+                        <div class="atlas-subsection-title">Code System & Analytical Framework</div>
+                        <div class="network-mini">
+                            <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Hegemonic Discourse (center) -->
+                                <rect x="255" y="90" width="190" height="36" rx="4" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1.5"/>
+                                <text x="350" y="113" text-anchor="middle" font-family="DM Mono" font-size="8" fill="var(--accent)" font-weight="400">HEGEMONIC DISCOURSE</text>
+
+                                <!-- Top codes -->
+                                <rect x="10" y="10" width="150" height="26" rx="3" fill="#463CC8" opacity="0.15" stroke="#463CC8" stroke-width="1"/>
+                                <text x="85" y="27" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#463CC8">Conditionality (94)</text>
+                                <line x1="160" y1="23" x2="260" y2="100" stroke="#463CC8" stroke-width="0.7" opacity="0.5"/>
+
+                                <rect x="180" y="10" width="120" height="26" rx="3" fill="#DC0000" opacity="0.15" stroke="#DC0000" stroke-width="1"/>
+                                <text x="240" y="27" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#DC0000">Naturalisation (51)</text>
+                                <line x1="240" y1="36" x2="310" y2="90" stroke="#DC0000" stroke-width="0.7" opacity="0.5"/>
+
+                                <rect x="320" y="10" width="120" height="26" rx="3" fill="#6E6E6E" opacity="0.15" stroke="#6E6E6E" stroke-width="1"/>
+                                <text x="380" y="27" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#6E6E6E">Self vs Other (48)</text>
+                                <line x1="380" y1="36" x2="370" y2="90" stroke="#6E6E6E" stroke-width="0.7" opacity="0.5"/>
+
+                                <rect x="460" y="10" width="140" height="26" rx="3" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1"/>
+                                <text x="530" y="27" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="var(--accent)">Security vs Norm. (31)</text>
+                                <line x1="500" y1="36" x2="430" y2="95" stroke="var(--accent)" stroke-width="0.7" opacity="0.5"/>
+
+                                <!-- Bottom codes -->
+                                <rect x="10" y="155" width="120" height="26" rx="3" fill="#008250" opacity="0.15" stroke="#008250" stroke-width="1"/>
+                                <text x="70" y="172" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#008250">Moralization (29)</text>
+                                <line x1="130" y1="165" x2="270" y2="125" stroke="#008250" stroke-width="0.7" opacity="0.5"/>
+
+                                <rect x="150" y="155" width="130" height="26" rx="3" fill="#F00082" opacity="0.15" stroke="#F00082" stroke-width="1"/>
+                                <text x="215" y="172" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#F00082">Temporal Framing (28)</text>
+                                <line x1="215" y1="155" x2="310" y2="126" stroke="#F00082" stroke-width="0.7" opacity="0.5"/>
+
+                                <rect x="300" y="155" width="130" height="26" rx="3" fill="#8C32A0" opacity="0.15" stroke="#8C32A0" stroke-width="1"/>
+                                <text x="365" y="172" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#8C32A0">Silencing of Alt. (14)</text>
+                                <line x1="365" y1="155" x2="360" y2="126" stroke="#8C32A0" stroke-width="0.7" opacity="0.5"/>
+
+                                <rect x="450" y="155" width="140" height="26" rx="3" fill="#966450" opacity="0.15" stroke="#966450" stroke-width="1"/>
+                                <text x="520" y="172" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="#966450">Resistance / Negot. (13)</text>
+                                <line x1="480" y1="155" x2="420" y2="126" stroke="#966450" stroke-width="0.7" opacity="0.5"/>
+
+                                <!-- Grouping label -->
+                                <rect x="300" y="205" width="180" height="24" rx="3" fill="#8C32A0" opacity="0.08" stroke="#8C32A0" stroke-width="0.8" stroke-dasharray="3,2"/>
+                                <text x="390" y="220" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#8C32A0">Tag Group: Silencing or Absences</text>
+                                <line x1="365" y1="181" x2="370" y2="205" stroke="#8C32A0" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.4"/>
+
+                                <rect x="550" y="90" width="140" height="26" rx="3" fill="#8C32A0" opacity="0.1" stroke="#8C32A0" stroke-width="0.8"/>
+                                <text x="620" y="107" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#8C32A0">Missing Voices (2)</text>
+                                <line x1="550" y1="103" x2="445" y2="110" stroke="#8C32A0" stroke-width="0.5" opacity="0.3"/>
+
+                                <rect x="550" y="125" width="140" height="26" rx="3" fill="#8C32A0" opacity="0.1" stroke="#8C32A0" stroke-width="0.8"/>
+                                <text x="620" y="142" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#8C32A0">Geopol. Erased (1)</text>
+                                <line x1="550" y1="138" x2="445" y2="118" stroke="#8C32A0" stroke-width="0.5" opacity="0.3"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Methodology -->
+                    <div class="atlas-subsection">
+                        <div class="atlas-subsection-title">Methodology</div>
+                        <p style="font-size: 0.9rem; color: var(--g600);">
+                            <strong>Software:</strong> Atlas.ti (v25.0.1) for systematic qualitative coding and analysis.
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--g600);">
+                            <strong>Corpus:</strong> 42 official EU documents including EEAS statements, European Commission communications, European Council conclusions, and European Parliament resolutions covering 2004–2025, with a focus on EU–Georgia relations.
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--g600);">
+                            <strong>Approach:</strong> Coding focused on identifying hegemonic discourse patterns, power asymmetries, and strategic framing techniques. The dominant code — "Conditionality and Normative Hierarchies" at 94 instances — accounts for nearly 30% of all coded segments, revealing how EU discourse systematically frames Georgia's European aspirations through conditionality mechanisms while maintaining structural power asymmetries.
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--g600);">
+                            <strong>Key Finding:</strong> The tension between normalisation strategies (51 instances) and explicit Self vs Other differentiation (48 instances) illustrates a contradictory logic: the EU simultaneously naturalises its normative authority while demarcating civilisational boundaries. This contradictory pattern is particularly pronounced in Josep Borrell's statements, which dominate the corpus (22 of 42 documents), revealing the hegemonic dimensions of EU enlargement policy.
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--g600);">
+                            <strong>Document Sources:</strong> European External Action Service (EEAS), European Commission, European Council, and European Parliament — spanning statements, press remarks, resolutions, and policy communications across two decades of EU-Georgia relations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second thesis -->
+            <div class="project-card">
+                <div class="project-type">Master Thesis (In Progress)</div>
+                <div class="project-title">EU Horizon and International Responsibility: Complicity in the Funding of Deathworlds in Palestine?</div>
+                <div class="project-meta">KU Leuven • 2025-Current • Supervisor: Prof. Dr. Stephan Keukelier</div>
+                <p>Investigates the extent to which EU Horizon programme funding materially contributes to deathworlds in the Occupied Palestinian Territories through critical examination of funding mechanisms and recipient institutions.</p>
+                <p style="margin-top: 12px; font-size: 0.9rem;"><strong>Framework:</strong> ARIO Articles 14, 41, 42 alongside theories of coloniality, legal subalternity, and necropolitics.</p>
+                <p style="font-size: 0.9rem;"><strong>Case Studies:</strong> AUTOFLY Project (€2.45M, Sigtech) • EARS Project (€1.65M, Technion)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-shell">
+            <h2>Skills & Languages</h2>
+            
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Languages</h3>
+            <p style="font-family: 'DM Mono', monospace; font-size: 0.85rem;">
+                <strong>Italian</strong> (Native) • <strong>English</strong> (C2) • <strong>French</strong> (C1) • <strong>Spanish</strong> (B2)
+            </p>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Research & Analysis</h3>
+            <p style="font-family: 'DM Mono', monospace; font-size: 0.85rem;">
+                Discourse Analysis • Qualitative Research • Policy Analysis • Report Drafting • Atlas.ti
+            </p>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Policy Areas</h3>
+            <p style="font-family: 'DM Mono', monospace; font-size: 0.85rem;">
+                EU External Action • EU Institutions • Global Governance • Foreign & Security Policy • ENP
+            </p>
+        </div>
+    </section>
+
+    <!-- Writing/Articles Section — News Outlet Style -->
+    <section id="writing">
+        <div class="section-shell" style="max-width: 880px;">
+            <div class="articles-header">
+                <h2 style="font-size: 2rem;">Writing</h2>
+                <div class="articles-date">Academic Papers & Analysis</div>
+            </div>
+
+            <!-- Hero article -->
+            <div class="article-hero" onclick="openArticle('georgia')">
+                <div class="article-category">Geopolitics</div>
+                <div class="article-title">Between Russia and the EU: Why Tens of Thousands of Georgians Took to the Streets Against the Foreign Agents Law</div>
+                <div class="article-excerpt">Examination of anti-Russian sentiment and 2024 Tbilisi protests through critical discourse analysis. Based on systematic coding of 42 EU-Georgia documents (315 coded segments), revealing how EU strategic framing shapes Georgia's geopolitical choices between Russian influence and Western integration.</div>
+                <div class="article-meta">UvA • 2024 &nbsp;|&nbsp; Based on Atlas.ti research with 42 documents analyzed</div>
+                <div class="read-tag">Read analysis <span class="arrow">→</span></div>
+            </div>
+
+            <!-- Grid of secondary articles -->
+            <div class="article-grid">
+                <div class="article-grid-item" onclick="openArticle('drones')">
+                    <div class="article-category">Security Studies</div>
+                    <div class="article-title">How $500 Commercial Drones Are Reshaping Modern Warfare: From Hamas Attacks to Ukraine's Frontlines</div>
+                    <div class="article-excerpt">Analysis of UAV usage in modern warfare, examining cases from Hamas October 2023 attacks and Ukraine conflict. Explores how low-cost drone technology has transformed military strategy.</div>
+                    <div class="article-meta">Stockholm University • 2023</div>
+                    <div class="read-tag">Read analysis <span class="arrow">→</span></div>
+                </div>
+
+                <div class="article-grid-item" onclick="openArticle('food')">
+                    <div class="article-category">Political Economy</div>
+                    <div class="article-title">Is Too Good To Go Really Saving Food or Just Rebranding Discount Shopping as Sustainability?</div>
+                    <div class="article-excerpt">Critical examination of whether the platform genuinely serves sustainability goals or primarily functions as a discount shopping app that commodifies environmental consciousness.</div>
+                    <div class="article-meta">VUB • 2023</div>
+                    <div class="read-tag">Read analysis <span class="arrow">→</span></div>
+                </div>
+
+                <div class="article-grid-item" onclick="openArticle('cfa')">
+                    <div class="article-category">Postcolonial Studies</div>
+                    <div class="article-title">60 Years After Independence: How France Still Controls 14 African Economies Through the CFA Franc</div>
+                    <div class="article-excerpt">Analysis of France's monetary control over 14 African countries through the CFA Franc system, representing one of the most enduring forms of post-colonial economic domination.</div>
+                    <div class="article-meta">VUB • 2024</div>
+                    <div class="read-tag">Read analysis <span class="arrow">→</span></div>
+                </div>
+
+                <div class="article-grid-item" onclick="openArticle('crypto')">
+                    <div class="article-category">Political Economy</div>
+                    <div class="article-title">European Football Clubs Haven't Stopped Gambling Sponsorships—They've Just Rebranded Them as Crypto</div>
+                    <div class="article-excerpt">Analysis of gambling industry rebranding through cryptocurrency and fan tokens. Examines how clubs exploit regulatory gaps while targeting younger audiences with speculative digital assets.</div>
+                    <div class="article-meta">UvA • 2024</div>
+                    <div class="read-tag">Read analysis <span class="arrow">→</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-shell">
+            <h2>Get in Touch</h2>
+            <p>Feel free to reach out for collaboration opportunities, research discussions, or professional inquiries.</p>
+            
+            <div style="margin-top: 3rem; font-family: 'DM Mono', monospace; font-size: 0.9rem; line-height: 2;">
+                <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d3ddc1d8dddb9ad89ad6d5c0c0ddc7c0d5f4d3d9d5ddd89ad7dbd9">[email&#160;protected]</a></p>
+                <p><strong>Phone:</strong> (+32) 499872695</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/giulio-battista" target="_blank" style="color: var(--accent);">linkedin.com/in/giulio-battista</a></p>
+                <p><strong>Location:</strong> Hebronlaan 162, 1950 Kraainem, Brussels, Belgium</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Reader (Slide-In Panel) -->
+    <div class="article-reader" id="article-reader">
+        <div class="article-reader-overlay" onclick="closeArticle()"></div>
+        <div class="article-reader-panel" id="reader-panel">
+            <div class="reader-close">
+                <button class="reader-close-btn" onclick="closeArticle()">← Back to articles</button>
+                <span class="reader-cat-badge" id="reader-cat"></span>
+            </div>
+            <div class="reader-header">
+                <h1 id="reader-title"></h1>
+                <div class="reader-header-meta" id="reader-meta"></div>
+            </div>
+            <div class="reader-body" id="reader-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Article data
+        const articles = {
+            'drones': {
+                category: 'Security Studies',
+                title: 'How $500 Commercial Drones Are Reshaping Modern Warfare: From Hamas Attacks to Ukraine\'s Frontlines',
+                meta: 'Stockholm University • 2023',
+                content: `
+                    <p>The proliferation of unmanned aerial vehicles (UAVs) has fundamentally transformed modern warfare. This paper examines the strategic implications of low-cost drone technology through two critical case studies: the Hamas attacks of October 2023 and the ongoing Ukraine conflict.</p>
+                    
+                    <h3>The October 2023 Hamas Attacks</h3>
+                    <p>The October 7, 2023 attacks demonstrated how non-state actors can leverage affordable drone technology to overcome conventional military advantages. Hamas utilized commercially available drones equipped with explosives to neutralize surveillance systems and create tactical openings for ground operations.</p>
+                    <p>The low barrier to entry for drone technology—with capable platforms available for under $1,000—enabled Hamas to deploy swarms of UAVs that overwhelmed Israeli air defenses designed for more sophisticated threats.</p>
+                    
+                    <h3>Ukraine: The Drone Laboratory</h3>
+                    <p>The Ukraine conflict has become a testing ground for drone warfare innovation. Both Ukrainian and Russian forces have extensively deployed affordable commercial and military drones for reconnaissance, targeting, and direct attack missions.</p>
+                    <p>Ukrainian forces have demonstrated particular innovation in adapting commercial drones for military purposes. The cost-effectiveness is striking: a $500 drone can destroy a tank worth millions of dollars.</p>
+                    
+                    <h3>Strategic Implications</h3>
+                    <p>The asymmetric nature of drone warfare poses significant challenges for traditional military doctrine. The low cost-to-impact ratio of modern UAVs enables smaller actors to project power previously reserved for well-funded nation-states.</p>
+                    <p>Traditional air defense systems struggle to track and engage small, slow-moving drones operating at low altitudes. The phenomenon of "drone swarms" further compounds this challenge.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>As drone technology continues to advance and costs decrease, the international community must grapple with new frameworks for arms control, defense strategy, and international humanitarian law. The cheap drone revolution represents not just a tactical shift, but a strategic paradigm change in 21st-century conflict.</p>
+                `
+            },
+            'food': {
+                category: 'Political Economy',
+                title: 'Is Too Good To Go Really Saving Food or Just Rebranding Discount Shopping as Sustainability?',
+                meta: 'VUB • 2023',
+                content: `
+                    <p>Too Good To Go markets itself as a sustainability solution to food waste. This paper critically examines whether the platform genuinely serves environmental goals or primarily functions as a discount shopping app.</p>
+                    
+                    <h3>The Business Model</h3>
+                    <p>Too Good To Go operates by allowing restaurants and retailers to sell surplus food at reduced prices through "surprise bags." The company takes a commission on each transaction while positioning itself as a social enterprise fighting food waste.</p>
+                    
+                    <h3>Consumer Motivations</h3>
+                    <p>Analysis of user reviews and purchasing patterns suggests that economic incentives, rather than environmental concerns, drive the majority of Too Good To Go usage. Consumers are primarily attracted by the prospect of obtaining premium food products at significant discounts.</p>
+                    
+                    <h3>Retailer Participation</h3>
+                    <p>For participating businesses, Too Good To Go provides a revenue recovery mechanism rather than a comprehensive waste reduction strategy. In some cases, the platform may even incentivize overproduction.</p>
+                    
+                    <h3>The Sustainability Paradox</h3>
+                    <p>While Too Good To Go does prevent some food from reaching landfills, its net environmental impact remains questionable. The platform may redirect food waste rather than reduce it, encourages additional car trips for pickups, and potentially enables consumption patterns that would not otherwise occur.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>Too Good To Go represents the commodification of environmental consciousness in the platform economy. True sustainability requires systemic changes to production and consumption patterns, not just better redistribution of surplus.</p>
+                `
+            },
+            'cfa': {
+                category: 'Postcolonial Studies',
+                title: '60 Years After Independence: How France Still Controls 14 African Economies Through the CFA Franc',
+                meta: 'VUB • 2024',
+                content: `
+                    <p>The CFA franc, used by 14 African countries, represents one of the most enduring vestiges of European colonialism. This monetary arrangement continues to shape economic sovereignty and development more than six decades after formal independence.</p>
+                    
+                    <h3>Colonial Origins</h3>
+                    <p>The "Colonies Françaises d'Afrique" franc was created to facilitate French extraction of African resources and maintain economic control. The currency was designed to serve French interests by tying African economies to the French treasury.</p>
+                    
+                    <h3>The Modern CFA System</h3>
+                    <p>Today's CFA franc operates through two central banks. Member states must deposit 50% of foreign currency reserves with the French Treasury, which guarantees convertibility but also maintains oversight and influence.</p>
+                    
+                    <h3>Economic Consequences</h3>
+                    <p>The fixed peg to the Euro creates an overvalued currency that makes African exports expensive and imports cheap, hindering industrial development. Limited monetary policy flexibility prevents countries from responding effectively to economic shocks.</p>
+                    
+                    <h3>The Sovereignty Question</h3>
+                    <p>The CFA franc arrangement fundamentally constrains African sovereignty. Member states cannot independently devalue currency, freely set interest rates, or use monetary policy as a development tool.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>The CFA franc system represents economic colonialism in monetary form. True independence requires monetary independence—the right to control one's currency and pursue monetary policy in the national interest.</p>
+                `
+            },
+            'georgia': {
+                category: 'Geopolitics',
+                title: 'Between Russia and the EU: Why Tens of Thousands of Georgians Took to the Streets Against the Foreign Agents Law',
+                meta: 'UvA • 2024 | Research based on critical discourse analysis of 42 EU-Georgia documents (2004-2025)',
+                content: `
+                    <p>In 2024, tens of thousands of Georgians filled the streets of Tbilisi in sustained protests. These demonstrations reflected deep-seated anti-Russian sentiment, concerns about democratic backsliding, and fears about Georgia's European future.</p>
+                    
+                    <h3>Historical Context</h3>
+                    <p>Georgia's relationship with Russia is shaped by centuries of imperial rule and Soviet occupation. The 2008 Russo-Georgian War remains a defining trauma, resulting in the occupation of 20% of Georgian territory.</p>
+                    
+                    <h3>The 2024 Trigger: The Foreign Agents Law</h3>
+                    <p>The immediate catalyst was the Georgian government's introduction of a "foreign agents" law requiring organizations receiving foreign funding to register as agents of foreign influence. The legislation closely mirrored Russian laws used to suppress civil society.</p>
+                    
+                    <h3>EU Discourse and Strategic Communication</h3>
+                    <p>Critical discourse analysis of 42 EU documents (2004-2025) reveals systematic patterns in how Brussels frames its relationship with Georgia. The research identified 315 coded segments across 12 primary discourse codes, with "Conditionality and Normative Hierarchies" emerging as the dominant frame (94 occurrences), followed by "Naturalisation" (51 occurrences) and "Self vs Other" (48 occurrences).</p>
+                    <p>This framing demonstrates the hegemonic dimensions of EU engagement: while emphasizing shared values and partnership, the discourse simultaneously maintains structural power asymmetries through conditionality mechanisms. The EU strategically deploys normative language while preserving hierarchical relations embedded in the accession process.</p>
+                    
+                    <h3>The Pro-European Movement</h3>
+                    <p>The protests represented a broader struggle over Georgia's geopolitical orientation. Demonstrators waved EU and Georgian flags side by side, demanding the government maintain course toward European integration. EU progress narratives and security framing have shaped Georgian civil society's understanding of their European aspirations.</p>
+                    
+                    <h3>Georgian Dream's Pivot</h3>
+                    <p>The ruling Georgian Dream party has gradually shifted toward policies perceived as pro-Russian. Critics argue Georgian Dream serves Russian interests by keeping Georgia in Moscow's sphere of influence.</p>
+                    
+                    <h3>Geopolitical Stakes</h3>
+                    <p>Georgia's street protests represent a frontline in the broader contest between Russian and Western influence in the former Soviet space. The outcome will determine not only Georgia's future but also the viability of European aspirations throughout the post-Soviet space.</p>
+                    
+                    <h3>Research Methodology</h3>
+                    <p>This analysis employed Atlas.ti qualitative research software for systematic coding of EU official statements, policy papers, and strategic communications. The corpus of 42 documents from EEAS, European Commission, European Council, and European Parliament was analyzed through 12 discourse codes, yielding 213 quotations and 315 coded segments. The methodology focused on identifying hegemonic discourse patterns, power asymmetries, and strategic framing techniques that characterize EU-Georgia relations.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>The 2024 Tbilisi protests crystallized Georgia's fundamental choice: align with Russia and accept authoritarian constraints, or pursue European integration and democratic governance. Understanding EU strategic discourse reveals the complex power dynamics underlying this geopolitical contest.</p>
+                `
+            },
+            'crypto': {
+                category: 'Political Economy',
+                title: 'European Football Clubs Haven\'t Stopped Gambling Sponsorships—They\'ve Just Rebranded Them as Crypto and Fan Tokens',
+                meta: 'UvA • 2024',
+                content: `
+                    <p>European football has witnessed a dramatic transformation in gambling promotion, shifting from traditional betting sponsors to cryptocurrency and fan token partnerships. This represents not a retreat from gambling, but a sophisticated evolution.</p>
+                    
+                    <h3>The Traditional Betting Era</h3>
+                    <p>For decades, European football clubs openly partnered with betting companies. This relationship came under increasing scrutiny as evidence mounted about gambling addiction, particularly among young fans.</p>
+                    
+                    <h3>Enter Cryptocurrency and Fan Tokens</h3>
+                    <p>Cryptocurrency partnerships and fan tokens emerged as an apparently innovative solution. Companies like Socios.com partnered with major clubs to offer digital tokens that purportedly give fans voting rights on minor club decisions.</p>
+                    
+                    <h3>The Gambling Reality</h3>
+                    <p>Despite the technological veneer, fan tokens exhibit clear gambling characteristics. Token values fluctuate wildly based on club performance and market speculation, encouraging fans to buy low and sell high.</p>
+                    
+                    <h3>Targeting a New Demographic</h3>
+                    <p>The shift to crypto and fan tokens strategically targets younger audiences who may be skeptical of traditional bookmakers but are attracted to cryptocurrency culture.</p>
+                    
+                    <h3>Regulatory Arbitrage</h3>
+                    <p>Cryptocurrency and fan token partnerships exploit regulatory gaps. While betting sponsorships face increasing restrictions across Europe, crypto partnerships often fall into legal grey areas.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>The evolution from betting to crypto represents rebranding, not reform. European football has not distanced itself from gambling; it has simply found more sophisticated ways to profit from it.</p>
+                `
+            }
+        };
+
+        // Navigation
+        function showSection(id, btn) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Atlas.ti toggle
+        let atlasOpen = false;
+        function toggleAtlas() {
+            const section = document.getElementById('atlas-section');
+            const btn = document.getElementById('atlas-toggle-btn');
+            atlasOpen = !atlasOpen;
+            if (atlasOpen) {
+                section.classList.add('open');
+                btn.textContent = '▲ Hide Atlas.ti Research Data';
+                // Animate bars
+                setTimeout(() => {
+                    document.querySelectorAll('.anim-bar').forEach(bar => {
+                        bar.style.width = bar.dataset.width;
+                    });
+                }, 100);
+            } else {
+                section.classList.remove('open');
+                btn.textContent = '▼ Atlas.ti Research Data & Methodology';
+                document.querySelectorAll('.anim-bar').forEach(bar => {
+                    bar.style.width = '0%';
+                });
+            }
+        }
+
+        // Article reader (slide-in)
+        function openArticle(id) {
+            const article = articles[id];
+            document.getElementById('reader-cat').textContent = article.category;
+            document.getElementById('reader-title').textContent = article.title;
+            document.getElementById('reader-meta').textContent = article.meta;
+            document.getElementById('reader-body').innerHTML = article.content;
+            
+            const reader = document.getElementById('article-reader');
+            reader.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            
+            // Scroll panel to top
+            document.getElementById('reader-panel').scrollTop = 0;
+        }
+
+        function closeArticle() {
+            const reader = document.getElementById('article-reader');
+            reader.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeArticle();
+        });
+
+        // Document group toggles
+        function toggleDocGroup(el) {
+            const list = el.nextElementSibling;
+            list.classList.toggle('expanded');
+            const arrow = el.querySelector('.dg-arrow');
+            if (arrow) arrow.textContent = list.classList.contains('expanded') ? '▲' : '▼';
+        }
+
+        // Build year chart
+        function buildYearChart() {
+            const data = [
+                {year:'04', count:1}, {year:'06', count:1}, {year:'07', count:3},
+                {year:'10', count:6}, {year:'11', count:1}, {year:'12', count:3},
+                {year:'21', count:1}, {year:'22', count:9}, {year:'23', count:3},
+                {year:'24', count:13}, {year:'25', count:1}
+            ];
+            const max = 13;
+            const chart = document.getElementById('year-chart');
+            const labels = document.getElementById('year-labels');
+            
+            data.forEach(d => {
+                const col = document.createElement('div');
+                col.className = 'v-bar-col';
+                
+                const count = document.createElement('div');
+                count.className = 'v-bar-count';
+                count.textContent = d.count;
+                
+                const bar = document.createElement('div');
+                bar.className = 'v-bar';
+                bar.style.height = ((d.count / max) * 100) + '%';
+                bar.title = `20${d.year}: ${d.count} document${d.count > 1 ? 's' : ''}`;
+                
+                col.appendChild(count);
+                col.appendChild(bar);
+                chart.appendChild(col);
+                
+                const label = document.createElement('span');
+                label.textContent = "'" + d.year;
+                labels.appendChild(label);
+            });
+        }
+
+        // Initialize
+        buildYearChart();
+    </script>
+
+    <!-- Green footer -->
+    <footer>
+        <p>© 2024 Giulio Leonardo Battista • Brussels, Belgium</p>
+    </footer>
+
+</body>
+</html>
